@@ -12,6 +12,23 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<!-- GENERATE_INFOPLIST_FILE is NO, so the icon key has to be declared by hand.
+	     CFBundleIconName is what modern iOS uses to pull the icon out of Assets.car;
+	     without it the home screen shows the grid placeholder. CFBundleIconFiles is
+	     kept for older lookups — "AppIcon" is the prefix actool uses for the PNGs it
+	     copies into the bundle root. -->
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon</string>
+			</array>
+			<key>CFBundleIconName</key>
+			<string>AppIcon</string>
+		</dict>
+	</dict>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
@@ -22,10 +39,13 @@
 	<string>132</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<!-- A minimal launch screen. UIColorName points at the color set shipped in
+	     Assets.xcassets; an empty string here is interpreted as a missing named color
+	     on some iOS releases, so keep it explicit. -->
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
-		<string></string>
+		<string>LaunchBackground</string>
 	</dict>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
@@ -61,10 +81,26 @@
 	</array>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>PandaPlay+ 不录音；此条目仅为兼容车机侧的音频能力探测。</string>
+	<!-- A hand-written Info.plist with a partial UIApplicationSceneManifest (only the
+	     multiple-scenes flag, no UISceneConfigurations) overrides the SwiftUI-generated
+	     scene manifest and leaves the system with no usable scene configuration on some
+	     iOS releases, which terminates the app at launch. Supply the default window-scene
+	     configuration explicitly; do NOT add UISceneDelegateClassName, because the SwiftUI
+	     App lifecycle owns the scene itself. -->
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+				</dict>
+			</array>
+		</dict>
 	</dict>
 </dict>
 </plist>

@@ -13,6 +13,7 @@
 		A1000000000000000000104 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000004 /* DisplayView.swift */; };
 		A1000000000000000000105 /* NetworkChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000005 /* NetworkChannel.swift */; };
 		A1000000000000000000106 /* PandaPlayCore in Frameworks */ = {isa = PBXBuildFile; productRef = A1000000000000000000200 /* PandaPlayCore */; };
+		A1000000000000000000107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000008 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A1000000000000000000005 /* NetworkChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChannel.swift; sourceTree = "<group>"; };
 		A1000000000000000000006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1000000000000000000007 /* PandaPlay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PandaPlay.entitlements; sourceTree = "<group>"; };
+		A1000000000000000000008 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				A1000000000000000000005 /* NetworkChannel.swift */,
 				A1000000000000000000006 /* Info.plist */,
 				A1000000000000000000007 /* PandaPlay.entitlements */,
+				A1000000000000000000008 /* Assets.xcassets */,
 			);
 			path = PandaPlay;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1000000000000000000107 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +206,7 @@
 		A1000000000000000000803 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CODE_SIGN_ENTITLEMENTS = PandaPlay/PandaPlay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -225,6 +230,7 @@
 		A1000000000000000000804 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CODE_SIGN_ENTITLEMENTS = PandaPlay/PandaPlay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
