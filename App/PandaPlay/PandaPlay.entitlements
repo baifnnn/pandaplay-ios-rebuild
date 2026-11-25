@@ -2,15 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- The accessory advertises a Bonjour service and accepts inbound connections on the
-	     local link, so it needs both the local-network and the service-advertising
-	     entitlement. Without networking.wifi-info the app cannot read the current SSID,
-	     which the original uses only for its diagnostics panel. -->
-	<key>com.apple.developer.networking.wifi-info</key>
-	<true/>
-	<key>com.apple.developer.networking.multicast</key>
-	<true/>
-	<key>com.apple.developer.networking.HotspotConfiguration</key>
-	<true/>
+	<!-- Intentionally empty.
+
+	     The original USBProbe carried `networking.wifi-info` and
+	     `HotspotConfiguration`, but the rebuilt app never calls
+	     CNCopyCurrentNetworkInfo, NEHotspotConfigurationManager or raw multicast:
+	     discovery is a plain NWListener Bonjour advertisement. Declaring capabilities
+	     that the provisioning profile does not grant makes codesign fail with
+	     "entitlement not permitted by profile", which would break both the CI signed
+	     build and any free-Apple-ID re-sign. Nothing here needs a restricted
+	     entitlement, so an empty dict is both correct and the most portable.
+	-->
 </dict>
 </plist>

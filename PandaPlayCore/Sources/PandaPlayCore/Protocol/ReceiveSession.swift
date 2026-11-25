@@ -355,7 +355,10 @@ public final class ReceiveSession: @unchecked Sendable {
         return Data()
     }
 
-    private func rejectFrame(_ reason: String) {
+    /// Records a frame the host could not turn into a decodable access unit.
+    /// Public because the iOS host calls it after `AVSampleBufferDisplayLayer` rejects a
+    /// sample; the core has no knowledge of platform decoders.
+    public func rejectFrame(_ reason: String) {
         framesRejected += 1
         telemetry.emit("receiver_rejected_frames", framesRejected)
         telemetry.emit("receiver_video_failure_reason", reason)

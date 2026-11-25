@@ -14,8 +14,10 @@ final class NetworkChannel: ByteChannel, @unchecked Sendable {
     private let lock = NSLock()
     private var closedFlag = false
 
-    var onReceive: ((Data) -> Void)?
-    var onClose: (() -> Void)?
+    // `ByteChannel` requires @Sendable callbacks; the class is @unchecked Sendable because
+    // NWConnection hands us bytes on its own queue and the core marshals back to MainActor.
+    var onReceive: (@Sendable (Data) -> Void)?
+    var onClose: (@Sendable () -> Void)?
 
     /// Bytes queued by the core that have not reached the socket yet. Kept so a caller can
     /// assert the core only answers what it meant to.

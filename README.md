@@ -25,6 +25,19 @@ pandaplay-ios/
 - 协议细节可以对着 XCTest 断言逐步校，而不是装到真机上盲试；
 - iOS 壳只剩适配层，约 700 行。
 
+## 直接拿 IPA
+
+仓库已配好 [`.github/workflows/build-ipa.yml`](.github/workflows/build-ipa.yml)：在 macOS 15 runner 上构建 arm64 真机包，产物同时作为 **workflow artifact** 和 **GitHub Release `v1.3.0-rebuild` 的资产**发布。
+
+```
+Actions → Build iOS IPA → Run workflow → 下载 PandaPlay-ipa
+```
+
+或者打开 [Releases](../../releases) 直接下 `PandaPlay-*.ipa`。
+
+- **默认（无签名材料）**：产出 `PandaPlay-unsigned.ipa`，结构完整、arm64 Mach-O + 合法 Info.plist。iOS 不会直接装未签名包，用 Sideloadly / AltStore / SideStore（免费 Apple ID，7 天）拖进去重签一次即可装真机；越狱设备可用 AppSync Unified 直装。
+- **配了签名材料**：在仓库 Settings → Secrets 里加 `IOS_P12_BASE64`、`IOS_P12_PASSWORD`、`IOS_MOBILEPROVISION_BASE64`、`IOS_TEAM_ID` 四项，重跑 workflow 会直接产出 `PandaPlay-signed.ipa`，可装到 profile 里登记的 UDID。
+
 ## 构建
 
 需要 macOS 14+ 与 Xcode 15+（iOS 17 SDK）。

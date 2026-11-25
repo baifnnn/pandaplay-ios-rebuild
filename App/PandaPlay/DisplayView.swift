@@ -62,10 +62,7 @@ final class DisplayView: UIView {
         let sizes = UnsafeMutablePointer<Int>.allocate(capacity: sets.count)
         let copies = sets.map { UnsafeMutablePointer<UInt8>.allocate(capacity: $0.count) }
         defer {
-            for (index, buffer) in copies.enumerated() {
-                buffer.deallocate()
-                _ = index
-            }
+            for buffer in copies { buffer.deallocate() }
             pointers.deallocate()
             sizes.deallocate()
         }
