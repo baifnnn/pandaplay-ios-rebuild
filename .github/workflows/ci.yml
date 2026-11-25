@@ -1,0 +1,33 @@
+name: Core tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        include:
+          - os: macos-14
+            cmd: swift test
+          - os: ubuntu-22.04
+            cmd: swift test
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run PandaPlayCore tests
+        working-directory: PandaPlayCore
+        run: ${{ matrix.cmd }}
+
+  build-ios:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the iOS app target builds
+        working-directory: App
+        run: |
+          xcodebuild -project PandaPlay.xcodeproj -scheme PandaPlay \
+            -destination 'generic/platform=iOS Simulator' \
+            -configuration Debug CODE_SIGNING_ALLOWED=NO build

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- The accessory advertises a Bonjour service and accepts inbound connections on the
+	     local link, so it needs both the local-network and the service-advertising
+	     entitlement. Without networking.wifi-info the app cannot read the current SSID,
+	     which the original uses only for its diagnostics panel. -->
+	<key>com.apple.developer.networking.wifi-info</key>
+	<true/>
+	<key>com.apple.developer.networking.multicast</key>
+	<true/>
+	<key>com.apple.developer.networking.HotspotConfiguration</key>
+	<true/>
+</dict>
+</plist>

@@ -1,0 +1,29 @@
+# Swift / SwiftPM
+.build/
+.swiftpm/
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+xcuserdata/
+DerivedData/
+
+# Build products
+build/
+*.ipa
+*.app
+*.dSYM/
+*.o
+*.obj
+*.dll
+*.exe
+*.pdb
+
+# macOS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Local scratch
+probe/
+zz_marker.txt
+*.log

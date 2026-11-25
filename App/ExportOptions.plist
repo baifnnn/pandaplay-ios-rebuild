@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+	<!-- development: install on your own registered devices.
+	     ad-hoc:      distribute to registered UDIDs without the App Store.
+	     With no Apple Developer account, use a free 7-day provisioning profile and
+	     `-allowProvisioningUpdates` instead of this file. -->
+	<key>method</key>
+	<string>development</string>
+	<key>signingStyle</key>
+	<string>automatic</string>
+	<key>stripSwiftSymbols</key>
+	<true/>
+	<key>compileBitcode</key>
+	<false/>
+	<key>destination</key>
+	<string>export</string>
+</dict>
+</plist>
